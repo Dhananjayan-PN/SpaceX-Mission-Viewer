@@ -154,7 +154,7 @@ const Missions: React.FunctionComponent<MissionsProps> = (props: MissionsProps) 
       className="Missions"
       style={{
         maxWidth: "1000px",
-        width: "95%",
+        width: "90%",
         marginLeft: "auto",
         marginRight: "auto",
         paddingBottom: "100px"

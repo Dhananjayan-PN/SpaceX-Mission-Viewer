@@ -34,14 +34,17 @@ const useStyles = makeStyles((theme: Theme) =>
     me: {
       position: "absolute",
       zIndex: 2,
-      top: "280px",
+      fontSize: "10px",
+      top: "250px",
       left: "50%",
       transform: "translate(-51%, 0)",
       color: "white",
       [theme.breakpoints.up("sm")]: {
-        top: "300px"
+        fontSize: "12px",
+        top: "260px"
       },
       [theme.breakpoints.up("md")]: {
+        fontSize: "15px",
         top: "350px"
       }
     },

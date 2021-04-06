@@ -22,12 +22,12 @@ const Filter: React.FunctionComponent<FilterProps> = (props: FilterProps) => {
       className="Filter"
       style={{
         maxWidth: "1000px",
-        width: "95%",
+        width: "90%",
         marginLeft: "auto",
         marginRight: "auto"
       }}
     >
-      <Typography variant="h6" style={{ marginBottom: 10, marginTop: -25, fontWeight: 400 }}>
+      <Typography variant="h6" style={{ marginTop: -25, fontWeight: 400 }}>
         Filter Results
       </Typography>
       <Chip
@@ -36,7 +36,7 @@ const Filter: React.FunctionComponent<FilterProps> = (props: FilterProps) => {
         variant={props.launched ? "default" : "outlined"}
         color={props.launched ? "primary" : "default"}
         onClick={() => props.launchedCallback(!props.launched)}
-        style={{ marginRight: 5 }}
+        style={{ marginRight: 5, marginTop: 10, marginBottom: 5 }}
       />
       <Chip
         label="Successful Landing"
@@ -44,7 +44,7 @@ const Filter: React.FunctionComponent<FilterProps> = (props: FilterProps) => {
         variant={props.landed ? "default" : "outlined"}
         color={props.landed ? "primary" : "default"}
         onClick={() => props.landedCallback(!props.landed)}
-        style={{ marginRight: 5 }}
+        style={{ marginRight: 5, marginTop: 10, marginBottom: 5 }}
       />
       <Chip
         label="Launch Year"
@@ -52,10 +52,9 @@ const Filter: React.FunctionComponent<FilterProps> = (props: FilterProps) => {
         variant={props.launchYear ? "default" : "outlined"}
         color={props.launchYear ? "primary" : "default"}
         onClick={() => props.launchYearCallback(!props.launchYear)}
-        style={{ marginRight: 3 }}
+        style={{ marginRight: 5, marginTop: 10, marginBottom: 5 }}
       />
-      :
-      <DatePicker style={{ marginLeft: 3 }} views={["year"]} value={props.year} onChange={props.yearCallback} />
+      <DatePicker style={{ marginLeft: 3, marginTop: 10, marginBottom: 5 }} views={["year"]} value={props.year} onChange={props.yearCallback} />
     </div>
   );
 };
