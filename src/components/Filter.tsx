@@ -1,16 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, Dispatch, SetStateAction } from "react";
 import { Typography, Chip } from "@material-ui/core";
 import { DatePicker } from "@material-ui/pickers";
 import EventIcon from "@material-ui/icons/Event";
 import FlightTakeoffIcon from "@material-ui/icons/FlightTakeoff";
 import FlightLandIcon from "@material-ui/icons/FlightLand";
 
-const Filter: React.FunctionComponent = () => {
-  const [year, setYear] = useState<Date | null>(new Date());
-  const [launchYear, setLaunchYear] = useState<boolean>(false);
-  const [launched, setLaunched] = useState<boolean>(false);
-  const [landed, setLanded] = useState<boolean>(false);
+type FilterProps = {
+  year: Date | null;
+  yearCallback: Dispatch<SetStateAction<Date | null>>;
+  launchYear: boolean;
+  launchYearCallback: Dispatch<SetStateAction<boolean>>;
+  launched: boolean;
+  launchedCallback: Dispatch<SetStateAction<boolean>>;
+  landed: boolean;
+  landedCallback: Dispatch<SetStateAction<boolean>>;
+};
 
+const Filter: React.FunctionComponent<FilterProps> = (props: FilterProps) => {
   return (
     <div
       className="Filter"
@@ -27,29 +33,29 @@ const Filter: React.FunctionComponent = () => {
       <Chip
         label="Successful Launch"
         icon={<FlightTakeoffIcon fontSize="small" style={{ marginLeft: 8 }} />}
-        variant={launched ? "default" : "outlined"}
-        color={launched ? "primary" : "default"}
-        onClick={() => setLaunched(!launched)}
+        variant={props.launched ? "default" : "outlined"}
+        color={props.launched ? "primary" : "default"}
+        onClick={() => props.launchedCallback(!props.launched)}
         style={{ marginRight: 5 }}
       />
       <Chip
         label="Successful Landing"
         icon={<FlightLandIcon fontSize="small" style={{ marginLeft: 8 }} />}
-        variant={landed ? "default" : "outlined"}
-        color={landed ? "primary" : "default"}
-        onClick={() => setLanded(!landed)}
+        variant={props.landed ? "default" : "outlined"}
+        color={props.landed ? "primary" : "default"}
+        onClick={() => props.landedCallback(!props.landed)}
         style={{ marginRight: 5 }}
       />
       <Chip
         label="Launch Year"
         icon={<EventIcon fontSize="small" style={{ marginLeft: 8 }} />}
-        variant={launchYear ? "default" : "outlined"}
-        color={launchYear ? "primary" : "default"}
-        onClick={() => setLaunchYear(!launchYear)}
+        variant={props.launchYear ? "default" : "outlined"}
+        color={props.launchYear ? "primary" : "default"}
+        onClick={() => props.launchYearCallback(!props.launchYear)}
         style={{ marginRight: 3 }}
       />
       :
-      <DatePicker style={{ marginLeft: 3 }} views={["year"]} value={year} onChange={setYear} />
+      <DatePicker style={{ marginLeft: 3 }} views={["year"]} value={props.year} onChange={props.yearCallback} />
     </div>
   );
 };

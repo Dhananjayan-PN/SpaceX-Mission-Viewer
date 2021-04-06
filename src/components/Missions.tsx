@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Typography, Card, CardActionArea, CardMedia, CardContent, Grid, Chip } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import EventIcon from "@material-ui/icons/Event";
 import FlightTakeoffIcon from "@material-ui/icons/FlightTakeoff";
 import FlightLandIcon from "@material-ui/icons/FlightLand";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
@@ -9,19 +10,21 @@ import WhatshotIcon from "@material-ui/icons/Whatshot";
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
-    borderRadius: 8
+    borderRadius: 10
   },
   media: {
     height: 180
   }
 });
 
-const Missions: React.FunctionComponent = () => {
+type MissionsProps = { url: string };
+
+const Missions: React.FunctionComponent<MissionsProps> = (props: MissionsProps) => {
   const classes = useStyles();
   const [cards, setCards] = useState<Array<JSX.Element>>();
 
   useEffect(() => {
-    fetch("https://api.spaceXdata.com/v3/launches?limit=100")
+    fetch(props.url)
       .then((response) => response.json())
       .then((data) => {
         let cards = data.map((mission: any, index: number) => (
@@ -39,6 +42,7 @@ const Missions: React.FunctionComponent = () => {
                   </Typography>
                   <Chip
                     label={mission.launch_year}
+                    icon={<EventIcon fontSize="small" style={{ marginLeft: 8 }} />}
                     variant="outlined"
                     color="primary"
                     size="small"
@@ -54,10 +58,16 @@ const Missions: React.FunctionComponent = () => {
                   />
                   {mission.rocket.first_stage.cores[0].land_success !== null ? (
                     <Chip
-                      label={mission.rocket.first_stage.cores[0].land_success ? "Success" : "Fail"}
+                      label={
+                        mission.rocket.first_stage.cores[0].land_success || mission.rocket.first_stage.cores[1]?.land_success ? "Success" : "Fail"
+                      }
                       icon={<FlightLandIcon fontSize="small" style={{ marginLeft: 8 }} />}
                       variant="outlined"
-                      color={mission.rocket.first_stage.cores[0].land_success ? "primary" : "secondary"}
+                      color={
+                        mission.rocket.first_stage.cores[0].land_success || mission.rocket.first_stage.cores[1]?.land_success
+                          ? "primary"
+                          : "secondary"
+                      }
                       size="small"
                       style={{ marginTop: -2, marginRight: 5, marginBottom: 8 }}
                     />
