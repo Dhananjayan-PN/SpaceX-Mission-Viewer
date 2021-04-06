@@ -114,7 +114,7 @@ const Missions: React.FunctionComponent<MissionsProps> = (props: MissionsProps) 
                       </Typography>
                     </div>
                   </CardContent>
-                  <CardActions style={{ alignItems: "center" }}>
+                  <CardActions style={{ alignItems: "center", marginTop: -8 }}>
                     <Button
                       onClick={() => {
                         setTitle(mission.mission_name);
