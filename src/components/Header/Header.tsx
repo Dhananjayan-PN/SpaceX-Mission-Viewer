@@ -22,12 +22,13 @@ const useStyles = makeStyles((theme: Theme) =>
       transform: "translate(-51%, 0)",
       color: "white",
       fontSize: "30px",
-      fontWeight: 300,
+      fontWeight: 400,
       [theme.breakpoints.up("sm")]: {
         fontSize: "40px"
       },
       [theme.breakpoints.up("md")]: {
-        fontSize: "55px"
+        fontSize: "55px",
+        fontWeight: 300
       }
     },
     search: {
