@@ -2,7 +2,7 @@ import React from "react";
 import { Typography, InputBase } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import { fade, makeStyles, Theme, createStyles } from "@material-ui/core/styles";
-import spaceImage from "../../assets/space.jpg";
+import spaceImage from "../assets/space.jpg";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
