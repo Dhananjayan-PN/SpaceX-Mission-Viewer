@@ -1,5 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { Typography, Card, CardActionArea, CardMedia, CardContent, Grid, Chip } from "@material-ui/core";
+import {
+  Typography,
+  Card,
+  CardActionArea,
+  CardMedia,
+  CardContent,
+  CardActions,
+  Grid,
+  Chip,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogContentText,
+  Button
+} from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import EventIcon from "@material-ui/icons/Event";
 import FlightTakeoffIcon from "@material-ui/icons/FlightTakeoff";
@@ -23,6 +37,9 @@ const Missions: React.FunctionComponent<MissionsProps> = (props: MissionsProps) 
   const classes = useStyles();
   const [data, setData] = useState<Array<any>>([]);
   const [cards, setCards] = useState<Array<JSX.Element | null>>([]);
+  const [dialog, setDialog] = useState<boolean>(false);
+  const [title, setTitle] = useState<string>("");
+  const [details, setDetails] = useState<string>("");
 
   useEffect(() => {
     let cards = data
@@ -36,7 +53,13 @@ const Missions: React.FunctionComponent<MissionsProps> = (props: MissionsProps) 
           return (
             <Grid item xs={12} sm={6} md={4} key={index}>
               <Card className={classes.root}>
-                <CardActionArea>
+                <CardActionArea
+                  onClick={() => {
+                    setTitle(mission.mission_name);
+                    setDetails(mission.details);
+                    setDialog(true);
+                  }}
+                >
                   <CardMedia
                     className={classes.media}
                     image={mission.links.flickr_images[0] ?? `http://img.youtube.com/vi/${mission.links.youtube_id}/0.jpg`}
@@ -90,10 +113,21 @@ const Missions: React.FunctionComponent<MissionsProps> = (props: MissionsProps) 
                         {mission.launch_site.site_name}
                       </Typography>
                     </div>
-                    <Typography variant="body2" color="textSecondary" component="p">
-                      {mission.details}
-                    </Typography>
                   </CardContent>
+                  <CardActions style={{ alignItems: "center" }}>
+                    <Button
+                      onClick={() => {
+                        setTitle(mission.mission_name);
+                        setDetails(mission.details);
+                        setDialog(true);
+                      }}
+                      size="small"
+                      color="primary"
+                      style={{ marginLeft: "auto", marginRight: "auto" }}
+                    >
+                      Read More
+                    </Button>
+                  </CardActions>
                 </CardActionArea>
               </Card>
             </Grid>
@@ -131,6 +165,12 @@ const Missions: React.FunctionComponent<MissionsProps> = (props: MissionsProps) 
       <Grid container spacing={3}>
         {cards}
       </Grid>
+      <Dialog open={dialog} onClose={() => setDialog(!dialog)}>
+        <DialogTitle>{title + " Info"}</DialogTitle>
+        <DialogContent style={{ marginTop: -15 }}>
+          <DialogContentText>{details ?? "No Details."}</DialogContentText>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
