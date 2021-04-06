@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { Typography, InputBase } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import { fade, makeStyles, Theme, createStyles } from "@material-ui/core/styles";
@@ -83,7 +83,12 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const Header: React.FunctionComponent = () => {
+type HeaderProps = {
+  search: string;
+  searchCallback: Dispatch<SetStateAction<string>>;
+};
+
+const Header: React.FunctionComponent<HeaderProps> = (props: HeaderProps) => {
   const classes = useStyles();
   return (
     <div className="Header">
@@ -96,6 +101,8 @@ const Header: React.FunctionComponent = () => {
           <SearchIcon />
         </div>
         <InputBase
+          onChange={(e) => props.searchCallback(e.target.value)}
+          value={props.search}
           placeholder="Search"
           classes={{
             root: classes.inputRoot,

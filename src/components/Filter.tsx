@@ -1,4 +1,4 @@
-import React, { useState, Dispatch, SetStateAction } from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { Typography, Chip } from "@material-ui/core";
 import { DatePicker } from "@material-ui/pickers";
 import EventIcon from "@material-ui/icons/Event";

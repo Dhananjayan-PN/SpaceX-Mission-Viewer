@@ -11,6 +11,7 @@ const App: React.FunctionComponent = () => {
   const [launched, setLaunched] = useState<boolean>(false);
   const [landed, setLanded] = useState<boolean>(false);
   const [url, setUrl] = useState<string>("https://api.spaceXdata.com/v3/launches?limit=100");
+  const [search, setSearch] = useState<string>("");
 
   useEffect(() => {
     let newUrl: string = "https://api.spaceXdata.com/v3/launches?limit=100";
@@ -29,7 +30,7 @@ const App: React.FunctionComponent = () => {
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
       <div className="App">
-        <Header />
+        <Header search={search} searchCallback={setSearch} />
         <Filter
           year={year}
           launchYear={launchYear}
@@ -40,7 +41,7 @@ const App: React.FunctionComponent = () => {
           launchedCallback={setLaunched}
           landedCallback={setLanded}
         />
-        <Missions url={url} />
+        <Missions url={url} search={search} />
       </div>
     </MuiPickersUtilsProvider>
   );
