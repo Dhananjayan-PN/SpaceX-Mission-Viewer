@@ -15,11 +15,11 @@ const App: React.FunctionComponent = () => {
   const [search, setSearch] = useState<string>("");
 
   useEffect(() => {
-    setYear(new Date(Cookies.getJSON("filters").year, 0, 365) ?? new Date());
-    setLaunchYear(Cookies.getJSON("filters").launchYear ?? false);
-    setLaunched(Cookies.getJSON("filters").launched ?? false);
-    setLanded(Cookies.getJSON("filters").landed ?? false);
-    setSearch(Cookies.getJSON("filters").search ?? "");
+    setYear(new Date(Cookies.getJSON("filters")?.year ?? 2021, 0, 365));
+    setLaunchYear(Cookies.getJSON("filters")?.launchYear ?? false);
+    setLaunched(Cookies.getJSON("filters")?.launched ?? false);
+    setLanded(Cookies.getJSON("filters")?.landed ?? false);
+    setSearch(Cookies.getJSON("filters")?.search ?? "");
   }, []);
 
   useEffect(() => {
