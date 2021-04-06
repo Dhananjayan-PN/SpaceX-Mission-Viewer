@@ -156,14 +156,21 @@ const Missions: React.FunctionComponent<MissionsProps> = (props: MissionsProps) 
         maxWidth: "1000px",
         width: "95%",
         marginLeft: "auto",
-        marginRight: "auto"
+        marginRight: "auto",
+        paddingBottom: "100px"
       }}
     >
       <Typography variant="h5" style={{ marginBottom: 20, marginTop: 25, fontSize: 25 }}>
         Missions
       </Typography>
       <Grid container spacing={3}>
-        {cards}
+        {cards.length !== 0 ? (
+          cards
+        ) : (
+          <Typography variant="h6" style={{ marginTop: 10, marginLeft: 13, fontSize: 15, fontWeight: 400 }}>
+            No Missions Found. Please try another search.
+          </Typography>
+        )}
       </Grid>
       <Dialog open={dialog} onClose={() => setDialog(!dialog)}>
         <DialogTitle>{title + " Info"}</DialogTitle>

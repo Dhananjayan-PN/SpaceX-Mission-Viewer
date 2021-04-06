@@ -1,5 +1,5 @@
 import React, { Dispatch, SetStateAction } from "react";
-import { Typography, InputBase } from "@material-ui/core";
+import { Typography, InputBase, Link } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import { fade, makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 import spaceImage from "../assets/space.jpg";
@@ -29,6 +29,20 @@ const useStyles = makeStyles((theme: Theme) =>
       [theme.breakpoints.up("md")]: {
         fontSize: "55px",
         fontWeight: 300
+      }
+    },
+    me: {
+      position: "absolute",
+      zIndex: 2,
+      top: "280px",
+      left: "50%",
+      transform: "translate(-51%, 0)",
+      color: "white",
+      [theme.breakpoints.up("sm")]: {
+        top: "300px"
+      },
+      [theme.breakpoints.up("md")]: {
+        top: "350px"
       }
     },
     search: {
@@ -79,6 +93,12 @@ const useStyles = makeStyles((theme: Theme) =>
       left: "0px",
       backgroundColor: "white",
       borderRadius: "35px 35px 0px 0px"
+    },
+    link: {
+      color: "white",
+      "&:hover": {
+        color: "#3bdcff"
+      }
     }
   })
 );
@@ -113,6 +133,12 @@ const Header: React.FunctionComponent<HeaderProps> = (props: HeaderProps) => {
           fullWidth
         />
       </div>
+      <Typography className={classes.me} align="center" variant="button" noWrap>
+        Made by{" "}
+        <a href="https://dhananjayan.tech" className={classes.link}>
+          Dhananjayan P N
+        </a>
+      </Typography>
       <div className={classes.curve}></div>
     </div>
   );
