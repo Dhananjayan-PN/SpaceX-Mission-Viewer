@@ -3,6 +3,7 @@ import DateFnsUtils from "@date-io/date-fns";
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import Header from "./Header";
 import Filter from "./Filter";
+import Missions from "./Missions";
 
 const App: React.FunctionComponent = () => {
   return (
@@ -10,6 +11,7 @@ const App: React.FunctionComponent = () => {
       <div className="App">
         <Header />
         <Filter />
+        <Missions />
       </div>
     </MuiPickersUtilsProvider>
   );

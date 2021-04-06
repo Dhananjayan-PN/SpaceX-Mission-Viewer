@@ -15,13 +15,13 @@ const Filter: React.FunctionComponent = () => {
     <div
       className="Filter"
       style={{
-        maxWidth: "800px",
+        maxWidth: "1000px",
         width: "95%",
         marginLeft: "auto",
         marginRight: "auto"
       }}
     >
-      <Typography variant="h5" style={{ marginBottom: 10, marginTop: -25 }}>
+      <Typography variant="h6" style={{ marginBottom: 10, marginTop: -25, fontWeight: 400 }}>
         Filter Results
       </Typography>
       <Chip
