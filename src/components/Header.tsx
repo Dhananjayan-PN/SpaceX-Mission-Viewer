@@ -1,5 +1,5 @@
 import React, { Dispatch, SetStateAction } from "react";
-import { Typography, InputBase, Link } from "@material-ui/core";
+import { Typography, InputBase } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import { fade, makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 import spaceImage from "../assets/space.jpg";

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import DateFnsUtils from "@date-io/date-fns";
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
-import { Typography } from "@material-ui/core";
 import Cookies from "js-cookie";
 import Header from "./Header";
 import Filter from "./Filter";

@@ -3,15 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@date-io/core": "^2.10.7",
     "@date-io/date-fns": "1.x",
     "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
     "@material-ui/pickers": "^3.3.10",
+    "@types/js-cookie": "^2.2.6",
     "@types/node": "^12.0.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "date-fns": "^2.19.0",
     "js-cookie": "^2.2.1",
+    "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
@@ -41,7 +44,5 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "@types/js-cookie": "^2.2.6"
-  }
+  "devDependencies": {}
 }
