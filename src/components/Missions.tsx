@@ -104,6 +104,7 @@ const Missions: React.FunctionComponent<MissionsProps> = (props: MissionsProps) 
       })
       .filter((val) => val !== null);
     setCards(cards);
+    // eslint-disable-next-line
   }, [data, props.search]);
 
   useEffect(() => {
@@ -112,7 +113,7 @@ const Missions: React.FunctionComponent<MissionsProps> = (props: MissionsProps) 
       .then((data) => {
         setData(data);
       });
-  }, [props.url, props.search]);
+  }, [props.url]);
 
   return (
     <div
