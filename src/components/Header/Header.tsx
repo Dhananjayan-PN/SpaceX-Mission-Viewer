@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme: Theme) =>
     background: {
       objectFit: "cover",
       width: "100%",
-      minHeight: "350px",
+      minHeight: "300px",
       maxHeight: "450px",
       position: "relative",
       zIndex: 1
@@ -21,14 +21,19 @@ const useStyles = makeStyles((theme: Theme) =>
       left: "50%",
       transform: "translate(-51%, 0)",
       color: "white",
-      fontSize: "55px",
-      fontWeight: 300
+      fontSize: "30px",
+      fontWeight: 300,
+      [theme.breakpoints.up("sm")]: {
+        fontSize: "40px"
+      },
+      [theme.breakpoints.up("md")]: {
+        fontSize: "55px"
+      }
     },
-    searchContainer: {},
     search: {
       position: "absolute",
       zIndex: 2,
-      top: "240px",
+      top: "180px",
       left: "50%",
       transform: "translate(-50%, 0)",
       color: "white",
@@ -40,6 +45,12 @@ const useStyles = makeStyles((theme: Theme) =>
       backgroundColor: fade(theme.palette.common.black, 0.35),
       "&:hover": {
         backgroundColor: fade(theme.palette.common.black, 0.55)
+      },
+      [theme.breakpoints.up("sm")]: {
+        top: "200px"
+      },
+      [theme.breakpoints.up("md")]: {
+        top: "250px"
       }
     },
     searchIcon: {
